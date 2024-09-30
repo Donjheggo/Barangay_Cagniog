@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { ReactNode } from "react";
 
 export default function HomeCard({ item }: { item: HomeCardT }) {
   return (
@@ -35,5 +36,5 @@ type HomeCardT = {
   title: string;
   subtitle: string;
   href: string;
-  icon: any;
+  icon: ReactNode;
 };

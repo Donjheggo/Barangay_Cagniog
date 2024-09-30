@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 export default function DashboardCard({ item }: { item: DashboardCardT }) {
   return (
@@ -20,6 +21,6 @@ export default function DashboardCard({ item }: { item: DashboardCardT }) {
 type DashboardCardT = {
   title: string;
   number: number;
-  icon: any;
+  icon: ReactNode;
   href: string;
 };
