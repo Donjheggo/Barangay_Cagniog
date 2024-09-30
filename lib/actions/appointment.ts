@@ -120,7 +120,7 @@ export async function GetMyAppointments(user_id: string) {
 
     const { data, error } = await supabase
       .from("appointments")
-      .select("*")
+      .select(`*, resident_id(name), service_id(name)`)
       .eq("user_id", user_id);
 
     if (error) {

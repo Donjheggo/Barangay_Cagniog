@@ -5,6 +5,11 @@ import {
   LayoutDashboard,
   CalendarDays,
   UsersRound,
+  HandPlatter,
+  HousePlus,
+  UserRound,
+  MessageSquareWarning,
+  FilePlus,
 } from "lucide-react";
 import { ThemeToggler } from "../themes/theme-toggler";
 import { signout } from "@/lib/actions/auth";
@@ -95,32 +100,32 @@ export const adminLinks = [
   {
     name: "Services",
     href: "/dashboard/services",
-    icon: <CalendarDays />,
+    icon: <HandPlatter />,
   },
   {
     name: "Puroks",
     href: "/dashboard/puroks",
-    icon: <CalendarDays />,
+    icon: <HousePlus />,
   },
   {
     name: "Residents",
     href: "/dashboard/residents",
-    icon: <CalendarDays />,
+    icon: <UsersRound />,
   },
   {
     name: "Officials",
     href: "/dashboard/officials",
-    icon: <CalendarDays />,
+    icon: <UserRound />,
   },
   {
     name: "Reports",
     href: "/dashboard/reports",
-    icon: <CalendarDays />,
+    icon: <MessageSquareWarning />,
   },
   {
     name: "Appointments",
     href: "/dashboard/appointments",
-    icon: <CalendarDays />,
+    icon: <FilePlus />,
   },
   {
     name: "Users",
@@ -138,31 +143,31 @@ export const userLinks = [
   {
     name: "Services",
     href: "/services",
-    icon: <CalendarDays />,
+    icon: <HandPlatter />,
   },
   {
     name: "Puroks",
     href: "/puroks",
-    icon: <CalendarDays />,
+    icon: <HousePlus />,
   },
   {
     name: "Residents",
     href: "/residents",
-    icon: <CalendarDays />,
+    icon: <UsersRound />,
   },
   {
     name: "Officials",
     href: "/officials",
-    icon: <CalendarDays />,
+    icon: <UserRound />,
   },
   {
     name: "Reports",
     href: "/reports",
-    icon: <CalendarDays />,
+    icon: <MessageSquareWarning />,
   },
   {
     name: "Appointments",
     href: "/appointments",
-    icon: <CalendarDays />,
+    icon: <FilePlus />,
   },
 ];

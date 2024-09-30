@@ -11,13 +11,14 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 import { CreateReport } from "@/lib/actions/reports";
 import { toast } from "react-toastify";
+import { useUser } from "@/context/user-context";
 
 export default function CreateDialog() {
+  const { user, loading } = useUser();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -37,11 +38,17 @@ export default function CreateDialog() {
     }
   };
 
+  if (loading) return;
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default" className="flex items-center">
-          <Plus size={18} className="mr-2" /> New Reports
+        <Button
+          size="lg"
+          variant="default"
+          className="flex items-center w-full"
+        >
+          Create New Report
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -55,13 +62,13 @@ export default function CreateDialog() {
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="message" className="text-right">
-                Services name
+                Message
               </Label>
-              <Input
+              <input name="user_id" defaultValue={user?.id} hidden />
+              <Textarea
                 name="message"
                 id="message"
-                type="text"
-                placeholder="Services name"
+                placeholder="Write message here"
                 className="col-span-3"
                 required
               />

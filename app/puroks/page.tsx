@@ -1,4 +1,4 @@
-import ServicesTable from "@/components/user/services/table";
+import PuroksTable from "@/components/user/puroks/table";
 import SearchBar from "@/components/search-bar";
 
 export default function Services({
@@ -11,13 +11,13 @@ export default function Services({
 
   return (
     <div className="container max-w-screen-md mx-auto">
-      <h1 className="text-center text-2xl">Services</h1>
+      <h1 className="text-center text-2xl">Puroks</h1>
       <div className="mt-5">
         <div className="flex items-center justify-between">
           <SearchBar />
         </div>
         <div className="mt-2">
-          <ServicesTable searchQuery={searchQuery} page={page} />
+          <PuroksTable searchQuery={searchQuery} page={page} />
         </div>
       </div>
     </div>

@@ -113,7 +113,8 @@ export async function GetMyReports(user_id: string) {
     const { data, error } = await supabase
       .from("reports")
       .select("*")
-      .eq("user_id", user_id);
+      .eq("user_id", user_id)
+      .order("created_at", { ascending: false });
 
     if (error) {
       console.error(error);
