@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import UpdateEventForm from "@/components/services/update-form";
+import UpdateEventForm from "@/components/admin/services/update-form";
 import { GetServicesById } from "@/lib/actions/services";
 
 export default async function UpdateEvent({

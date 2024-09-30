@@ -1,6 +1,6 @@
-import OfficialsTable from "@/components/officials/table";
+import OfficialsTable from "@/components/admin/officials/table";
 import SearchBar from "@/components/search-bar";
-import CreateDialog from "@/components/officials/create-dialog";
+import CreateDialog from "@/components/admin/officials/create-dialog";
 
 export default function Services({
   searchParams,

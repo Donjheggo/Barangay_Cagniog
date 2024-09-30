@@ -1,6 +1,6 @@
 import SearchBar from "@/components/search-bar";
-import ResidentsTable from "@/components/residents/table";
-import CreateDialog from "@/components/residents/create-dialog";
+import ResidentsTable from "@/components/admin/residents/table";
+import CreateDialog from "@/components/admin/residents/create-dialog";
 
 export default function Residents({
   searchParams,

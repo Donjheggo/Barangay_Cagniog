@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/themes/theme-provider";
 import { Bounce, ToastContainer } from "react-toastify";
 import { createClient } from "@/lib/supabase/server";
 import UserProvider from "@/context/user-context";
-import UserLayout from "@/components/user-layout/layout";
+import UserLayout from "@/components/layout/layout";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 

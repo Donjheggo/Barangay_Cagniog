@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import UpdateAppointmentForm from "@/components/appointments/update-form";
+import UpdateAppointmentForm from "@/components/admin/appointments/update-form";
 import { GetAppointmentById } from "@/lib/actions/appointment";
 
 export default async function UpdateAppointment({

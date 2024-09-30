@@ -1,4 +1,4 @@
-import UsersTable from "@/components/users/users-table";
+import UsersTable from "@/components/admin/users/users-table";
 import SearchBar from "@/components/search-bar";
 
 export default function Users({

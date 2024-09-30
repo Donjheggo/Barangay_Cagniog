@@ -1,6 +1,6 @@
-import PuroksTable from "@/components/puroks/table";
+import PuroksTable from "@/components/admin/puroks/table";
 import SearchBar from "@/components/search-bar";
-import CreateDialog from "@/components/puroks/create-dialog";
+import CreateDialog from "@/components/admin/puroks/create-dialog";
 
 export default function Services({
   searchParams,

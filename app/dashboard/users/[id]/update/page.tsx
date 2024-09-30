@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { GetUserById } from "@/lib/actions/users";
-import UpdateUserForm from "@/components/users/update-form";
+import UpdateUserForm from "@/components/admin/users/update-form";
 
 export default async function UpdateEvent({
   params,

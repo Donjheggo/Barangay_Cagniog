@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import UpdateResidentForm from "@/components/residents/update-form";
+import UpdateResidentForm from "@/components/admin/residents/update-form";
 import { GetResidentById } from "@/lib/actions/residents";
 
 export default async function UpdateEvent({

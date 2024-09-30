@@ -1,5 +1,5 @@
 import SearchBar from "@/components/search-bar";
-import ReportsTable from "@/components/reports/table";
+import ReportsTable from "@/components/admin/reports/table";
 
 export default function Residents({
   searchParams,

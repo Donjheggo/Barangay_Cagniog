@@ -1,6 +1,6 @@
-import ServicesTable from "@/components/services/table";
+import ServicesTable from "@/components/admin/services/table";
 import SearchBar from "@/components/search-bar";
-import CreateDialog from "@/components/services/create-dialog";
+import CreateDialog from "@/components/admin/services/create-dialog";
 
 export default function Services({
   searchParams,

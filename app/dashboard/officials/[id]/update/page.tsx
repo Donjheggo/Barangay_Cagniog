@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import UpdateOfficialForm from "@/components/officials/update-form";
+import UpdateOfficialForm from "@/components/admin/officials/update-form";
 import { GetOfficialById } from "@/lib/actions/officials";
 
 export default async function UpdateOfficial({

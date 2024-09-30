@@ -1,6 +1,6 @@
 import SearchBar from "@/components/search-bar";
-import AppointmentsTable from "@/components/appointments/table";
-import CreateDialog from "@/components/appointments/create-dialog";
+import AppointmentsTable from "@/components/admin/appointments/table";
+import CreateDialog from "@/components/admin/appointments/create-dialog";
 export default function Residents({
   searchParams,
 }: {
