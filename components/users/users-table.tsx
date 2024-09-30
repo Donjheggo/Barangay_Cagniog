@@ -28,7 +28,6 @@ import UpdateButton from "./update-button";
 import DeleteButton from "./delete-button";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "../ui/button";
-import Image from "next/image";
 
 export default async function UsersTable({
   searchQuery,
@@ -55,10 +54,6 @@ export default async function UsersTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="hidden w-[100px] sm:table-cell">
-                <span className="sr-only">Image</span>
-              </TableHead>
-              <TableHead className="table-cell">Name</TableHead>
               <TableHead className="table-cell">Email</TableHead>
               <TableHead className="table-cell">Role</TableHead>
               <TableHead>
@@ -69,16 +64,6 @@ export default async function UsersTable({
           <TableBody>
             {users?.map((item, index) => (
               <TableRow key={index}>
-                <TableCell className="hidden sm:table-cell">
-                  <Image
-                    alt="Product image"
-                    className="aspect-square rounded-full object-cover"
-                    height="64"
-                    src={item.image}
-                    width="64"
-                  />
-                </TableCell>
-                <TableCell className="font-semibold">{item.name}</TableCell>
                 <TableCell className="font-normal">{item.email}</TableCell>
                 <TableCell className="font-normal">
                   <Badge>{item.role} </Badge>

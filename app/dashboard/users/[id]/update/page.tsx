@@ -17,7 +17,7 @@ export default async function UpdateEvent({
         Back
       </Link>
       <h1 className="text-center text-2xl">
-        Update {user.name}&apos;s Role
+        Update Role
       </h1>
       <div className="mt-5">
         <UpdateUserForm item={user} />
