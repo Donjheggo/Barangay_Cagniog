@@ -30,13 +30,6 @@ export default function Sidenav() {
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <Link
-              href="/"
-              className="flex items-center gap-2 hover:bg-muted rounded-md p-2"
-            >
-              <Settings />
-              <h1 className="text-sm">{user?.name}</h1>
-            </Link>
             <div className="mt-2">
               <p className="text-sm font-medium text-muted-foreground pb-2 max-w-[248px] truncate">
                 Pages

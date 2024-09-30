@@ -35,14 +35,6 @@ export default function Header() {
           className="flex flex-col item-start w-[250px]"
         >
           <nav className="grid items-start text-sm font-medium">
-            <Link
-              href="/"
-              className="flex items-center gap-2 hover:bg-muted rounded-md p-2"
-            >
-              <Settings />
-              <h1 className="text-md">{user?.name}</h1>
-            </Link>
-
             <div className="mt-2">
               <p className="text-sm font-medium text-muted-foreground pb-2 max-w-[248px] truncate">
                 Pages
