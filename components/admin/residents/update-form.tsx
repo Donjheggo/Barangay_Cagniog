@@ -17,7 +17,7 @@ import { Button } from "../../ui/button";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { PuroksT } from "./create-dialog";
-import { GetPuroks } from "@/lib/actions/purok";
+import { GetAllPuroks } from "@/lib/actions/purok";
 
 export default function UpdateResidentForm({ item }: { item: ResidentT }) {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function UpdateResidentForm({ item }: { item: ResidentT }) {
 
   useEffect(() => {
     const fetchPuroks = async () => {
-      const data = await GetPuroks();
+      const data = await GetAllPuroks();
       if (data) setPuroks(data);
     };
 
