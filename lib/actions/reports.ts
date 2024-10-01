@@ -44,7 +44,7 @@ export async function CreateReport(formData: FormData) {
       .select();
 
     if (error) {
-      return { error: error };
+      return { error: error.message };
     }
     revalidatePath("/reports");
     revalidatePath("/dashboard/reports");
