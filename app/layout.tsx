@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/themes/theme-provider";
 import { Bounce, ToastContainer } from "react-toastify";
 import { createClient } from "@/lib/supabase/server";
-import UserProvider from "@/context/user-context";
 import UserLayout from "@/components/layout/layout";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
@@ -43,9 +42,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <UserProvider>
-            {data?.user ? <UserLayout>{children}</UserLayout> : children}
-          </UserProvider>
+          {data?.user ? <UserLayout>{children}</UserLayout> : children}
 
           <ToastContainer
             position="bottom-left"
