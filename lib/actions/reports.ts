@@ -12,7 +12,7 @@ export async function GetReports(
     const supabase = createClient();
     const query = supabase
       .from("reports")
-      .select(`*, user_id (email)`)
+      .select(`*, user_id (email), resident_id(*)`)
       .order("created_at", { ascending: true })
       .range((page - 1) * items_per_page, page * items_per_page - 1);
 
@@ -39,7 +39,8 @@ export async function CreateReport(formData: FormData) {
       .from("reports")
       .insert({
         user_id: formData.get("user_id"),
-        message: formData.get("message"),
+        reason: formData.get("reason"),
+        resident_id: formData.get("resident_id"),
       })
       .select();
 
@@ -112,7 +113,7 @@ export async function GetMyReports(user_id: string) {
 
     const { data, error } = await supabase
       .from("reports")
-      .select("*")
+      .select(`*, resident_id(*)`)
       .eq("user_id", user_id)
       .order("created_at", { ascending: false });
 

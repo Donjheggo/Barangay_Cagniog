@@ -51,8 +51,10 @@ export default async function ReportsTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="table-cell">Email</TableHead>
-              <TableHead className="table-cell">Message</TableHead>
+              <TableHead className="table-cell">Report by</TableHead>
+              <TableHead className="table-cell">Reported name</TableHead>
+              <TableHead className="table-cell">Reason</TableHead>
+              <TableHead className="table-cell">Created at</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
               </TableHead>
@@ -62,9 +64,16 @@ export default async function ReportsTable({
             {reports?.map((item, index) => (
               <TableRow key={index}>
                 <TableCell>
-                  <p className="font-semibold text-lg">{item.user_id.email}</p>
+                  <p>{item.user_id.email}</p>
                 </TableCell>
-                <TableCell className="font-normal">{item.message}</TableCell>
+                <TableCell className="font-normal">
+                  {item.resident_id.name}
+                </TableCell>
+                <TableCell className="font-normal">{item.reason}</TableCell>
+                <TableCell className="font-normal">
+                  {new Date(item.created_at).toDateString()}
+                </TableCell>
+
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
