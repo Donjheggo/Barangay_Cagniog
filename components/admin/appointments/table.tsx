@@ -60,6 +60,8 @@ export default async function AppointmentsTable({
               <TableHead className="table-cell">Email</TableHead>
               <TableHead className="table-cell">Resident</TableHead>
               <TableHead className="table-cell">Service</TableHead>
+              <TableHead className="table-cell">Payment Method</TableHead>
+              <TableHead className="table-cell">Gcash Reference no.</TableHead>
               <TableHead className="table-cell">Status</TableHead>
 
               <TableHead>
@@ -70,14 +72,20 @@ export default async function AppointmentsTable({
           <TableBody>
             {appointments?.map((item, index) => (
               <TableRow key={index}>
-                <TableCell>
-                  <p className="font-semibold text-lg">{item.user_id.email}</p>
+                <TableCell className="font-normal">
+                  {item.user_id.email}
                 </TableCell>
                 <TableCell className="font-normal">
                   {item.resident_id.name}
                 </TableCell>
                 <TableCell className="font-normal">
                   {item.service_id.name}
+                </TableCell>
+                <TableCell className="font-normal">
+                  {item.payment_method}
+                </TableCell>
+                <TableCell className="font-normal">
+                  {item.gcash_reference_number}
                 </TableCell>
                 <TableCell className="font-normal">
                   <Badge variant="outline">{item.status}</Badge>

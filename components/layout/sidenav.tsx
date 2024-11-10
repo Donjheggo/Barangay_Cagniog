@@ -10,6 +10,7 @@ import {
   UserRound,
   MessageSquareWarning,
   FilePlus,
+  HandCoins,
 } from "lucide-react";
 import { ThemeToggler } from "../themes/theme-toggler";
 import { signout } from "@/lib/actions/auth";
@@ -131,6 +132,11 @@ export const adminLinks = [
     name: "Users",
     href: "/dashboard/users",
     icon: <UsersRound />,
+  },
+  {
+    name: "Gcash",
+    href: "/dashboard/gcash",
+    icon: <HandCoins />,
   },
 ];
 

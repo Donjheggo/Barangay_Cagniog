@@ -12,7 +12,9 @@ export type Database = {
       appointments: {
         Row: {
           created_at: string
+          gcash_reference_number: string | null
           id: string
+          paymenth_method: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id: string
           service_id: string
           status: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -20,7 +22,9 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          gcash_reference_number?: string | null
           id?: string
+          paymenth_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -28,7 +32,9 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          gcash_reference_number?: string | null
           id?: string
+          paymenth_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -57,6 +63,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      gcash_number: {
+        Row: {
+          created_at: string
+          id: string
+          number: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          number: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          number?: string
+        }
+        Relationships: []
       }
       officials: {
         Row: {
@@ -226,6 +250,7 @@ export type Database = {
     Enums: {
       APPOINTMENT_STATUS: "PENDING" | "ACCEPTED" | "COMPLETED"
       GENDER: "MALE" | "FEMALE"
+      PAYMENT_METHOD: "GCASH" | "ON_OFFICE"
       USER_ROLE: "USER" | "ADMIN"
     }
     CompositeTypes: {

@@ -13,7 +13,7 @@ export async function GetAppointments(
     const query = supabase
       .from("appointments")
       .select(`*, user_id(email), resident_id(name), service_id(name)`)
-      .order("created_at", { ascending: true })
+      .order("created_at", { ascending: false })
       .range((page - 1) * items_per_page, page * items_per_page - 1);
 
     const { data, error } = searchQuery
@@ -41,6 +41,8 @@ export async function CreateAppointment(formData: FormData) {
         user_id: formData.get("user_id"),
         resident_id: formData.get("resident_id"),
         service_id: formData.get("service_id"),
+        payment_method: formData.get("payment_method"),
+        gcash_reference_number: formData.get("gcash_reference_number"),
         status: "PENDING",
       })
       .select();

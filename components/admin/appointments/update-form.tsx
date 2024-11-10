@@ -65,7 +65,7 @@ export default function UpdateAppointmentForm({
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="status">Purok</Label>
+          <Label htmlFor="status">Status</Label>
           <Select name="status" defaultValue={item.status}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select Purok" />

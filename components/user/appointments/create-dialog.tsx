@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
@@ -28,11 +29,28 @@ import { GetAllResidents } from "@/lib/actions/residents";
 import { GetAllServices } from "@/lib/actions/services";
 import { useEffect, useState } from "react";
 import { Tables } from "@/database.types";
+import { GetGcashNumber } from "@/lib/actions/payment-method";
+
+export type GcashNumberT = Tables<"gcash_number">;
 
 export default function CreateDialog() {
   const { loading, user } = useUser();
   const [services, setServices] = useState<ServiceT[]>([]);
   const [residents, setResidents] = useState<ResidentsT[]>([]);
+  const [payment_method, setPayment_method] = useState<
+    "GCASH" | "ON_OFFICE" | null
+  >(null);
+  const [gcash_number, setGcash_number] = useState<GcashNumberT>();
+
+  useEffect(() => {
+    const fetchGcash = async () => {
+      const data = await GetGcashNumber();
+      if (data) setGcash_number(data);
+      console.log("Data", data);
+    };
+
+    fetchGcash();
+  }, []);
 
   useEffect(() => {
     const fetchServiceAndResidents = async () => {
@@ -70,7 +88,11 @@ export default function CreateDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="lg" variant="default" className="flex items-center w-full">
+        <Button
+          size="lg"
+          variant="default"
+          className="flex items-center w-full"
+        >
           <Plus size={18} className="mr-2" /> New Appointment
         </Button>
       </DialogTrigger>
@@ -112,7 +134,7 @@ export default function CreateDialog() {
               <div className="col-span-3">
                 <Select name="resident_id">
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Service" />
+                    <SelectValue placeholder="Select Resident" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -126,6 +148,56 @@ export default function CreateDialog() {
                 </Select>
               </div>
             </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="payment_method" className="text-right">
+                Payment Method
+              </Label>
+              <div className="col-span-3">
+                <Select
+                  name="payment_method"
+                  onValueChange={(value) =>
+                    setPayment_method(value as "GCASH" | "ON_OFFICE" | null)
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Payment" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="ON_OFFICE">Pay at Office</SelectItem>
+                      <SelectItem value="GCASH">GCASH</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {payment_method === "GCASH" && (
+              <>
+                <div className="flex items-center justify-center">
+                  <h1 className="text-sm">
+                    Send GCASH Amount to this no: {" "}
+                    <span className="font-bold">{gcash_number?.number} </span>
+                  </h1>
+                </div>
+
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="gcash_reference_number" className="text-right">
+                    GCASH Reference no.
+                  </Label>
+                  <div className="col-span-3">
+                    <Input
+                      name="gcash_reference_number"
+                      id="gcash_reference_number"
+                      type="text"
+                      placeholder=""
+                      className="col-span-3"
+                      required
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <DialogFooter>
             <DialogClose asChild>
