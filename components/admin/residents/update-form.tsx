@@ -41,6 +41,10 @@ export default function UpdateResidentForm({ item }: { item: ResidentT }) {
       !formData.get("name") ||
       !formData.get("purok_id") ||
       !formData.get("gender") ||
+      !formData.get("religion") ||
+      !formData.get("birth_of_place") ||
+      !formData.get("income") ||
+      !formData.get("years_of_residency") ||
       !formData.get("birthdate")
     ) {
       toast.error("Please fill in all the required fields correctly.");
@@ -125,6 +129,50 @@ export default function UpdateResidentForm({ item }: { item: ResidentT }) {
             defaultValue={new Date(item.birthdate).toISOString().split("T")[0]}
           />
         </div>
+        <div className="grid gap-2">
+          <Label htmlFor="religion">Religion</Label>
+          <Input
+            name="religion"
+            id="religion"
+            type="text"
+            placeholder=""
+            required
+            defaultValue={item.religion}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="place_of_birth">Place of birth</Label>
+          <Input
+            name="place_of_birth"
+            id="place_of_birth"
+            type="text"
+            placeholder=""
+            required
+            defaultValue={item.place_of_birth}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="income">Income</Label>
+          <Input
+            name="income"
+            id="income"
+            type="text"
+            placeholder=""
+            required
+            defaultValue={item.income}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="years_of_residency">Years of residency</Label>
+          <Input
+            name="years_of_residency"
+            id="years_of_residency"
+            type="number"
+            placeholder=""
+            required
+            defaultValue={item.years_of_residency}
+          />
+        </div>
 
         <Button type="submit" disabled={loading}>
           {loading ? <Loader className="animate-spin" /> : "Save"}
@@ -140,4 +188,8 @@ type ResidentT = {
   purok_id: PuroksT;
   birthdate: Date;
   gender: "MALE" | "FEMALE";
+  place_of_birth: string;
+  religion: string;
+  income: string;
+  years_of_residency: number;
 };

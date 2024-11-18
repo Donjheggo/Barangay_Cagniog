@@ -48,6 +48,10 @@ export default function CreateDialog() {
       !formData.get("name") ||
       !formData.get("purok_id") ||
       !formData.get("gender") ||
+      !formData.get("religion") ||
+      !formData.get("place_of_birth") ||
+      !formData.get("income") ||
+      !formData.get("years_of_residency") ||
       !formData.get("birthdate")
     ) {
       toast.error("Please fill in all the required fields correctly.");
@@ -140,6 +144,58 @@ export default function CreateDialog() {
                 name="birthdate"
                 id="birthdate"
                 type="date"
+                placeholder=""
+                className="col-span-3"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="religion" className="text-right">
+                Religion
+              </Label>
+              <Input
+                name="religion"
+                id="religion"
+                type="text"
+                placeholder=""
+                className="col-span-3"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="place_of_birth" className="text-right">
+                Place of birth
+              </Label>
+              <Input
+                name="place_of_birth"
+                id="place_of_birth"
+                type="text"
+                placeholder=""
+                className="col-span-3"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="income" className="text-right">
+                Income
+              </Label>
+              <Input
+                name="income"
+                id="income"
+                type="text"
+                placeholder=""
+                className="col-span-3"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="years_of_residency" className="text-right">
+                Years of residency
+              </Label>
+              <Input
+                name="years_of_residency"
+                id="years_of_residency"
+                type="text"
                 placeholder=""
                 className="col-span-3"
                 required

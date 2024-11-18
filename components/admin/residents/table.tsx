@@ -57,6 +57,11 @@ export default async function ResidentsTable({
               <TableHead className="table-cell">Birthdate</TableHead>
               <TableHead className="table-cell">Gender</TableHead>
               <TableHead className="table-cell">Purok</TableHead>
+              <TableHead className="table-cell">Religion</TableHead>
+              <TableHead className="table-cell">Place of birth</TableHead>
+              <TableHead className="table-cell">Income</TableHead>
+              <TableHead className="table-cell">Years of residency</TableHead>
+
               <TableHead>
                 <span className="sr-only">Actions</span>
               </TableHead>
@@ -72,7 +77,17 @@ export default async function ResidentsTable({
                   {new Date(item.birthdate).toLocaleDateString()}
                 </TableCell>
                 <TableCell className="font-normal">{item.gender}</TableCell>
-                <TableCell className="font-normal">{item.purok_id.name}</TableCell>
+                <TableCell className="font-normal">
+                  {item.purok_id.name}
+                </TableCell>
+                <TableCell className="font-normal">{item.religion}</TableCell>
+                <TableCell className="font-normal">
+                  {item.place_of_birth}
+                </TableCell>
+                <TableCell className="font-normal">{item.income}</TableCell>
+                <TableCell className="font-normal">
+                  {item.years_of_residency}
+                </TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>

@@ -14,7 +14,7 @@ export type Database = {
           created_at: string
           gcash_reference_number: string | null
           id: string
-          paymenth_method: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          payment_method: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id: string
           service_id: string
           status: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -24,7 +24,7 @@ export type Database = {
           created_at?: string
           gcash_reference_number?: string | null
           id?: string
-          paymenth_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          payment_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -34,7 +34,7 @@ export type Database = {
           created_at?: string
           gcash_reference_number?: string | null
           id?: string
-          paymenth_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          payment_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
@@ -166,24 +166,39 @@ export type Database = {
           created_at: string
           gender: Database["public"]["Enums"]["GENDER"]
           id: string
+          income: string | null
           name: string
+          place_of_birth: string | null
           purok_id: string
+          religion: string | null
+          school_degree: string | null
+          years_of_residency: number | null
         }
         Insert: {
           birthdate: string
           created_at?: string
           gender: Database["public"]["Enums"]["GENDER"]
           id?: string
+          income?: string | null
           name: string
+          place_of_birth?: string | null
           purok_id?: string
+          religion?: string | null
+          school_degree?: string | null
+          years_of_residency?: number | null
         }
         Update: {
           birthdate?: string
           created_at?: string
           gender?: Database["public"]["Enums"]["GENDER"]
           id?: string
+          income?: string | null
           name?: string
+          place_of_birth?: string | null
           purok_id?: string
+          religion?: string | null
+          school_degree?: string | null
+          years_of_residency?: number | null
         }
         Relationships: [
           {

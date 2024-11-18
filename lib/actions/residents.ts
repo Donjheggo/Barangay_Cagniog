@@ -42,6 +42,10 @@ export async function CreateResident(formData: FormData) {
         purok_id: formData.get("purok_id"),
         gender: formData.get("gender"),
         birthdate: formData.get("birthdate"),
+        years_of_residency: formData.get("years_of_residency"),
+        religion: formData.get("religion"),
+        income: formData.get("income"),
+        place_of_birth: formData.get("birthdate"),
       })
       .select();
 
@@ -83,6 +87,10 @@ export async function UpdateResident(formData: FormData) {
         purok_id: formData.get("purok_id"),
         gender: formData.get("gender"),
         birthdate: formData.get("birthdate"),
+        years_of_residency: formData.get("years_of_residency"),
+        religion: formData.get("religion"),
+        income: formData.get("income"),
+        place_of_birth: formData.get("birthdate"),
       })
       .eq("id", formData.get("id"))
       .select();
