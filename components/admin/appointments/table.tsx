@@ -62,6 +62,7 @@ export default async function AppointmentsTable({
               <TableHead className="table-cell">Service</TableHead>
               <TableHead className="table-cell">Payment Method</TableHead>
               <TableHead className="table-cell">Gcash Reference no.</TableHead>
+              <TableHead className="table-cell">Date</TableHead>
               <TableHead className="table-cell">Status</TableHead>
 
               <TableHead>
@@ -79,13 +80,16 @@ export default async function AppointmentsTable({
                   {item.resident_id.name}
                 </TableCell>
                 <TableCell className="font-normal">
-                  {item.service_id.name}
+                  {item.service_id.name} - ₱{item.service_id.price}
                 </TableCell>
                 <TableCell className="font-normal">
                   {item.payment_method}
                 </TableCell>
                 <TableCell className="font-normal">
                   {item.gcash_reference_number}
+                </TableCell>
+                <TableCell className="font-normal">
+                  {new Date(item.date).toDateString()}
                 </TableCell>
                 <TableCell className="font-normal">
                   <Badge variant="outline">{item.status}</Badge>
