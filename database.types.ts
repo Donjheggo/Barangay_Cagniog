@@ -11,30 +11,39 @@ export type Database = {
     Tables: {
       appointments: {
         Row: {
+          amount: number | null
           created_at: string
+          date: string | null
           gcash_reference_number: string | null
           id: string
           payment_method: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          quantity: number | null
           resident_id: string
           service_id: string
           status: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
           user_id: string
         }
         Insert: {
+          amount?: number | null
           created_at?: string
+          date?: string | null
           gcash_reference_number?: string | null
           id?: string
           payment_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          quantity?: number | null
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
           user_id?: string
         }
         Update: {
+          amount?: number | null
           created_at?: string
+          date?: string | null
           gcash_reference_number?: string | null
           id?: string
           payment_method?: Database["public"]["Enums"]["PAYMENT_METHOD"]
+          quantity?: number | null
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]

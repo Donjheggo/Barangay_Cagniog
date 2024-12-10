@@ -152,21 +152,6 @@ export const userLinks = [
     icon: <HandPlatter />,
   },
   {
-    name: "Puroks",
-    href: "/puroks",
-    icon: <HousePlus />,
-  },
-  {
-    name: "Residents",
-    href: "/residents",
-    icon: <UsersRound />,
-  },
-  {
-    name: "Officials",
-    href: "/officials",
-    icon: <UserRound />,
-  },
-  {
     name: "Reports",
     href: "/reports",
     icon: <MessageSquareWarning />,

@@ -119,7 +119,7 @@ export default function CreateDialog() {
                     <SelectGroup>
                       {services.map((item, index) => (
                         <SelectItem key={index} value={item.id}>
-                          {item.name}
+                          {item.name} - ₱{item.price}
                         </SelectItem>
                       ))}
                     </SelectGroup>
@@ -148,6 +148,16 @@ export default function CreateDialog() {
                 </Select>
               </div>
             </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="date" className="text-right">
+                Date
+              </Label>
+              <div className="col-span-3">
+                <Input type="date" name="date" />
+              </div>
+            </div>
+
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="payment_method" className="text-right">
                 Payment Method
@@ -176,13 +186,16 @@ export default function CreateDialog() {
               <>
                 <div className="flex items-center justify-center">
                   <h1 className="text-sm">
-                    Send GCASH Amount to this no: {" "}
+                    Send GCASH Amount to this no:{" "}
                     <span className="font-bold">{gcash_number?.number} </span>
                   </h1>
                 </div>
 
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="gcash_reference_number" className="text-right">
+                  <Label
+                    htmlFor="gcash_reference_number"
+                    className="text-right"
+                  >
                     GCASH Reference no.
                   </Label>
                   <div className="col-span-3">

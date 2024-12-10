@@ -41,6 +41,7 @@ export async function CreateAppointment(formData: FormData) {
         user_id: formData.get("user_id"),
         resident_id: formData.get("resident_id"),
         service_id: formData.get("service_id"),
+        date: formData.get("date"),
         payment_method: formData.get("payment_method"),
         gcash_reference_number: formData.get("gcash_reference_number"),
         status: "PENDING",
@@ -122,7 +123,7 @@ export async function GetMyAppointments(user_id: string) {
 
     const { data, error } = await supabase
       .from("appointments")
-      .select(`*, resident_id(name), service_id(name)`)
+      .select(`*, resident_id(name), service_id(*)`)
       .eq("user_id", user_id);
 
     if (error) {
