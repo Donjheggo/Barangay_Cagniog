@@ -1,17 +1,25 @@
 "use client";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { UpdatePurok } from "@/lib/actions/purok";
+import { UpdateReport } from "@/lib/actions/reports";
 import { toast } from "react-toastify";
 import { Button } from "../../ui/button";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Tables } from "@/database.types";
-import { PuroksT } from "../residents/create-dialog";
 
-export default function UpdatePurokForm({ item }: { item: PuroksT }) {
+export type ReportsT = Tables<"reports">;
+
+export default function UpdateReportForm({ item }: { item: ReportsT }) {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -19,19 +27,19 @@ export default function UpdatePurokForm({ item }: { item: PuroksT }) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    if (!formData.get("name")) {
+    if (!formData.get("status")) {
       toast.error("Please fill in all the required fields correctly.");
       return;
     }
     setLoading(true);
     try {
-      const { error } = await UpdatePurok(formData);
+      const { error } = await UpdateReport(formData);
       if (error) {
         toast.error(error.toString());
       }
-      router.push("/dashboard/puroks");
+      router.push("/dashboard/reports");
     } catch (error) {
-      toast.error("There was an unexpected error updating service.");
+      toast.error("There was an unexpected error updating status.");
     } finally {
       setLoading(false);
     }
@@ -41,7 +49,6 @@ export default function UpdatePurokForm({ item }: { item: PuroksT }) {
     <form onSubmit={handleSubmit}>
       <div className="grid gap-4 mt-5 container max-w-screen-sm mx-auto">
         <div className="grid gap-2">
-          <Label htmlFor="name">Service name</Label>
           <input
             name="id"
             id="id"
@@ -51,14 +58,22 @@ export default function UpdatePurokForm({ item }: { item: PuroksT }) {
             defaultValue={item.id}
             hidden
           />
-          <Input
-            name="name"
-            id="name"
-            type="text"
-            placeholder=""
-            required
-            defaultValue={item.name}
-          />
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="status">Status</Label>
+          <Select name="status" defaultValue={item.status}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select Purok" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="ON_GOING">On Going</SelectItem>
+                <SelectItem value="COMPLETED">Completed</SelectItem>
+                <SelectItem value="REJECTED">Rejected</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
 
         <Button type="submit" disabled={loading}>
@@ -68,5 +83,3 @@ export default function UpdatePurokForm({ item }: { item: PuroksT }) {
     </form>
   );
 }
-
-export type ServicesT = Tables<"services">;

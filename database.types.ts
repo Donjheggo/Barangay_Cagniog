@@ -11,7 +11,6 @@ export type Database = {
     Tables: {
       appointments: {
         Row: {
-          amount: number | null
           created_at: string
           date: string | null
           gcash_reference_number: string | null
@@ -21,10 +20,10 @@ export type Database = {
           resident_id: string
           service_id: string
           status: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
+          total_amount: number | null
           user_id: string
         }
         Insert: {
-          amount?: number | null
           created_at?: string
           date?: string | null
           gcash_reference_number?: string | null
@@ -34,10 +33,10 @@ export type Database = {
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
+          total_amount?: number | null
           user_id?: string
         }
         Update: {
-          amount?: number | null
           created_at?: string
           date?: string | null
           gcash_reference_number?: string | null
@@ -47,6 +46,7 @@ export type Database = {
           resident_id?: string
           service_id?: string
           status?: Database["public"]["Enums"]["APPOINTMENT_STATUS"]
+          total_amount?: number | null
           user_id?: string
         }
         Relationships: [
@@ -136,6 +136,7 @@ export type Database = {
           id: string
           reason: string | null
           resident_id: string
+          status: Database["public"]["Enums"]["REPORT_STATUS"]
           user_id: string | null
         }
         Insert: {
@@ -143,6 +144,7 @@ export type Database = {
           id?: string
           reason?: string | null
           resident_id?: string
+          status?: Database["public"]["Enums"]["REPORT_STATUS"]
           user_id?: string | null
         }
         Update: {
@@ -150,6 +152,7 @@ export type Database = {
           id?: string
           reason?: string | null
           resident_id?: string
+          status?: Database["public"]["Enums"]["REPORT_STATUS"]
           user_id?: string | null
         }
         Relationships: [
@@ -275,6 +278,7 @@ export type Database = {
       APPOINTMENT_STATUS: "PENDING" | "ACCEPTED" | "COMPLETED"
       GENDER: "MALE" | "FEMALE"
       PAYMENT_METHOD: "GCASH" | "ON_OFFICE"
+      REPORT_STATUS: "ON_GOING" | "REJECTED" | "COMPLETED"
       USER_ROLE: "USER" | "ADMIN"
     }
     CompositeTypes: {

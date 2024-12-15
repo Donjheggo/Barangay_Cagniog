@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/table";
 import { GetPuroks, GetTotalPuroks } from "@/lib/actions/purok";
 import { TablePagination } from "./pagination";
-import UpdateButton from "./update-button";
+import UpdateButton from "../reports/update-button";
 import DeleteButton from "./delete-button";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "../../ui/button";

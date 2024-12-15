@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import UpdatePurokForm from "@/components/admin/puroks/update-form";
+import UpdatePurokForm from "@/components/admin/reports/update-form";
 import { GetPurokById } from "@/lib/actions/purok";
 
 export default async function UpdatePurok({

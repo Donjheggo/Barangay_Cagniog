@@ -10,7 +10,7 @@ export default function Residents({
   const page = Number(searchParams?.page) || 1;
 
   return (
-    <div className="container max-w-screen-md mx-auto">
+    <div className="container max-w-screen-lg mx-auto">
       <h1 className="text-center text-2xl">Reports / Blotter</h1>
       <div className="mt-5">
         <div className="flex items-center justify-between">

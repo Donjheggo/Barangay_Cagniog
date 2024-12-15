@@ -73,6 +73,28 @@ export async function GetReportById(id: string) {
   }
 }
 
+export async function UpdateReport(formData: FormData) {
+  try {
+    const supabase = createClient();
+    const { error } = await supabase
+      .from("reports")
+      .update({
+        status: formData.get("status"),
+      })
+      .eq("id", formData.get("id"))
+      .select();
+
+    if (error) {
+      return { error: error };
+    }
+    revalidatePath("/reports");
+    revalidatePath("/dashboard/reports");
+    return { error: "" };
+  } catch (error) {
+    return { error: error };
+  }
+}
+
 export async function DeleteReport(id: string) {
   try {
     const supabase = createClient();

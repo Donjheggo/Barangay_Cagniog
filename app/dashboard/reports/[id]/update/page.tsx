@@ -1,14 +1,14 @@
 import { ArrowLeft } from "lucide-react";
+import { GetReportById } from "@/lib/actions/reports";
+import UpdateReportForm from "@/components/admin/reports/update-form";
 import Link from "next/link";
-import UpdateResidentForm from "@/components/admin/residents/update-form";
-import { GetResidentById } from "@/lib/actions/residents";
 
-export default async function UpdateEvent({
+export default async function UpdateReport({
   params,
 }: {
   params: { id: string };
 }) {
-  const event = await GetResidentById(params.id);
+  const item = await GetReportById(params.id);
 
   return (
     <div>
@@ -16,9 +16,9 @@ export default async function UpdateEvent({
         <ArrowLeft />
         Back
       </Link>
-      <h1 className="text-center text-2xl">Update Resident</h1>
+      <h1 className="text-center text-2xl">Update Report</h1>
       <div className="mt-5">
-        <UpdateResidentForm item={event} />
+        <UpdateReportForm item={item} />
       </div>
     </div>
   );

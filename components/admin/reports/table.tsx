@@ -11,6 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -22,6 +23,7 @@ import {
 } from "@/components/ui/table";
 import { GetReports, GetTotalReports } from "@/lib/actions/reports";
 import { TablePagination } from "./pagination";
+import UpdateButton from "./update-button";
 import DeleteButton from "./delete-button";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "../../ui/button";
@@ -54,6 +56,7 @@ export default async function ReportsTable({
               <TableHead className="table-cell">Report by</TableHead>
               <TableHead className="table-cell">Reported name</TableHead>
               <TableHead className="table-cell">Reason</TableHead>
+              <TableHead className="table-cell">Status</TableHead>
               <TableHead className="table-cell">Created at</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
@@ -70,6 +73,13 @@ export default async function ReportsTable({
                   {item.resident_id.name}
                 </TableCell>
                 <TableCell className="font-normal">{item.reason}</TableCell>
+                <TableCell>
+                  {item.status === "ON_GOING"
+                    ? "On Going"
+                    : item.status === "COMPLETED"
+                    ? "Completed"
+                    : "Rejected"}
+                </TableCell>
                 <TableCell className="font-normal">
                   {new Date(item.created_at).toDateString()}
                 </TableCell>
@@ -83,6 +93,10 @@ export default async function ReportsTable({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
+                      <DropdownMenuItem>
+                        <UpdateButton id={item.id} />
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
                       <DropdownMenuItem>
                         <DeleteButton id={item.id} />
                       </DropdownMenuItem>
