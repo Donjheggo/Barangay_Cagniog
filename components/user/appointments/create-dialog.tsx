@@ -36,6 +36,8 @@ export type GcashNumberT = Tables<"gcash_number">;
 export default function CreateDialog() {
   const { loading, user } = useUser();
   const [services, setServices] = useState<ServiceT[]>([]);
+  const [selectedServiceId, setSelectedServiceId] = useState<string>("");
+  const [quantity, setQuantity] = useState<number>(1);
   const [residents, setResidents] = useState<ResidentsT[]>([]);
   const [payment_method, setPayment_method] = useState<
     "GCASH" | "ON_OFFICE" | null
@@ -68,6 +70,7 @@ export default function CreateDialog() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    console.log("Form data: ", formData.get("total_amount"))
     if (!formData.get("resident_id") || !formData.get("service_id")) {
       toast.error("Please fill in all the required fields correctly.");
       return;
@@ -84,6 +87,11 @@ export default function CreateDialog() {
   };
 
   if (loading) return;
+
+  const selectedService = services.find(
+    (item) => item.id === selectedServiceId
+  );
+  const total_amount = Number(selectedService?.price) * quantity || 0;
 
   return (
     <Dialog>
@@ -111,7 +119,10 @@ export default function CreateDialog() {
               </Label>
               <input name="user_id" defaultValue={user?.id} hidden />
               <div className="col-span-3">
-                <Select name="service_id">
+                <Select
+                  name="service_id"
+                  onValueChange={(e) => setSelectedServiceId(e)}
+                >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Service" />
                   </SelectTrigger>
@@ -127,6 +138,43 @@ export default function CreateDialog() {
                 </Select>
               </div>
             </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="quantity" className="text-right">
+                Quantity
+              </Label>
+              <div className="col-span-3">
+                <Input
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  name="quantity"
+                  id="quantity"
+                  type="number"
+                  placeholder=""
+                  className="col-span-3"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="total_amount" className="text-right">
+                Total amount
+              </Label>
+              <div className="col-span-3">
+                <Input
+                  value={total_amount}
+                  name="total_amount"
+                  id="total_amount"
+                  type="number"
+                  placeholder=""
+                  className="col-span-3"
+                  disabled
+                  required
+                />
+              </div>
+            </div>
+
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="resident_id" className="text-right">
                 Resident
@@ -184,13 +232,6 @@ export default function CreateDialog() {
 
             {payment_method === "GCASH" && (
               <>
-                <div className="flex items-center justify-center">
-                  <h1 className="text-sm">
-                    Send GCASH Amount to this no:{" "}
-                    <span className="font-bold">{gcash_number?.number} </span>
-                  </h1>
-                </div>
-
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label
                     htmlFor="gcash_reference_number"
@@ -208,6 +249,12 @@ export default function CreateDialog() {
                       required
                     />
                   </div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <h1 className="text-sm">
+                    Send Total Amount to this GCASH no:{" "}
+                    <span className="font-bold">{gcash_number?.number} </span>
+                  </h1>
                 </div>
               </>
             )}
